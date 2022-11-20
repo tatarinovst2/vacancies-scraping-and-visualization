@@ -4,6 +4,7 @@ import requests
 
 from bs4 import BeautifulSoup
 
+from core.constants import ROOT_URL
 from core.headers_generation import get_random_headers
 
 
@@ -26,7 +27,9 @@ class PageParser:
         self._last_vacancies_page_count = len(vacancies_list)
 
         for vacancy_dict in vacancies_list:
-            vacancy_data = {"title": vacancy_dict["title"],
+            vacancy_data = {"id": vacancy_dict["id"],
+                            "url": "".join([ROOT_URL, vacancy_dict["href"]]),
+                            "title": vacancy_dict["title"],
                             "specialization": vacancy_dict["divisions"][0]["title"]
                             if vacancy_dict.get("divisions") else None,
                             "qualification": vacancy_dict["salaryQualification"]['title']

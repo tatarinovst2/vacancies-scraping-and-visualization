@@ -4,6 +4,7 @@ import json
 
 import matplotlib.pyplot as plt
 
+from core.constants import PROJECT_PATH
 from core.exceptions import DatasetDirectoryEmpty
 
 
@@ -30,7 +31,7 @@ def visualize_dataset(file_path: Path | str, data_name: str, bars: list[str] = N
 
 def visualize_latest_dataset(data_name: str, bars: list[str] = None) -> None:
     """Find the latest creates dataset and creates histogram for given data aspect"""
-    files = (Path(__file__).parent / 'datasets').glob("*.json")
+    files = (PROJECT_PATH / 'datasets').glob("*.json")
 
     if not files:
         raise DatasetDirectoryEmpty()

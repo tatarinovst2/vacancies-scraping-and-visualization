@@ -4,6 +4,7 @@ import requests
 
 from bs4 import BeautifulSoup
 
+from core.constants import VACANCIES_URL
 from core.exceptions import IncorrectLocationException
 from core.headers_generation import get_random_headers
 
@@ -14,8 +15,7 @@ class URLGenerator:  # pylint: disable=too-few-public-methods
                  locations: list = None):
         self.locations = locations
         self.specializations = specializations
-        self._root_url = "https://career.habr.com/vacancies?"
-        self._root_page_soup = self._get_root_page_soup()
+        self._vacancies_page_soup = self._get_root_page_soup()
 
     def get_url(self, page: int = 1) -> str:
         """Generates url of given page with current URLGenerator's attributes"""
@@ -31,11 +31,12 @@ class URLGenerator:  # pylint: disable=too-few-public-methods
 
         url_parts.append("type=all")
 
-        return "".join([self._root_url, "&".join(url_parts), '/'])
+        return "".join([VACANCIES_URL, "&".join(url_parts), '/'])
 
-    def _get_root_page_soup(self) -> BeautifulSoup:
+    @staticmethod
+    def _get_root_page_soup() -> BeautifulSoup:
         """Returns the first page for URLGenerator with current attributes"""
-        response = requests.get(self._root_url, headers=get_random_headers(), timeout=15)
+        response = requests.get(VACANCIES_URL, headers=get_random_headers(), timeout=15)
         return BeautifulSoup(response.text, 'html.parser')
 
     def _get_specialization_part(self) -> str:
@@ -43,7 +44,7 @@ class URLGenerator:  # pylint: disable=too-few-public-methods
         if not self.specializations:
             return ""
 
-        data = json.loads(self._root_page_soup.find('script', type='application/json').text)
+        data = json.loads(self._vacancies_page_soup.find('script', type='application/json').text)
 
         specializations = []
         specialization_codes = []

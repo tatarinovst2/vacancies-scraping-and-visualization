@@ -1,10 +1,9 @@
 """Finds urls with URLGenerator and parses them with Parser, then saves results"""
-from pathlib import Path
-
 import json
 import time
 import datetime
 
+from core.constants import PROJECT_PATH
 from core.page_parser import PageParser
 from core.url_generator import URLGenerator
 
@@ -39,10 +38,10 @@ class Scraper:  # pylint: disable=too-few-public-methods
 
     def _dump_results(self) -> None:
         """Saves results to dataset in datasets folder"""
-        if not Path(Path(__file__).parent / 'datasets').exists():
-            Path(Path(__file__).parent / 'datasets').mkdir()
+        if not (PROJECT_PATH / 'datasets').exists():
+            (PROJECT_PATH / 'datasets').mkdir()
 
-        with (Path(__file__).parent / 'datasets' / f'{datetime.datetime.now()}_dataset.json').\
+        with (PROJECT_PATH / 'datasets' / f'{datetime.datetime.now()}_dataset.json').\
                 open("w", encoding='utf-8') as file:
             json.dump(self._vacancy_data, file, sort_keys=False,
                       indent=4, ensure_ascii=False, separators=(',', ': '))
