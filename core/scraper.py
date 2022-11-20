@@ -5,8 +5,8 @@ import json
 import time
 import datetime
 
-from page_parser import PageParser
-from url_generator import URLGenerator
+from core.page_parser import PageParser
+from core.url_generator import URLGenerator
 
 
 class Scraper:  # pylint: disable=too-few-public-methods

@@ -4,7 +4,7 @@ import json
 
 import matplotlib.pyplot as plt
 
-from exceptions import DatasetDirectoryEmpty
+from core.exceptions import DatasetDirectoryEmpty
 
 
 def visualize_dataset(file_path: Path | str, data_name: str, bars: list[str] = None) -> None:

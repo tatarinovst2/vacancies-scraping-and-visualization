@@ -4,8 +4,8 @@ import requests
 
 from bs4 import BeautifulSoup
 
-from exceptions import IncorrectLocationException
-from headers_generation import get_random_headers
+from core.exceptions import IncorrectLocationException
+from core.headers_generation import get_random_headers
 
 
 class URLGenerator:  # pylint: disable=too-few-public-methods

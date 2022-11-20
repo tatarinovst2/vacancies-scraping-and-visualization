@@ -4,7 +4,7 @@ import requests
 
 from bs4 import BeautifulSoup
 
-from headers_generation import get_random_headers
+from core.headers_generation import get_random_headers
 
 
 class PageParser:
