@@ -9,7 +9,7 @@ specializations, locations and qualifications.
 
 Make sure you are located in the project's directory in terminal or command line, then run:
 ```commandline
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 python3 main.py
 ```
 
