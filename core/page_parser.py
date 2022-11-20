@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 from headers_generation import get_random_headers
 
 
-class URLParser:
+class PageParser:
     """Parses the search page for vacancies"""
     def __init__(self, url: str, **restrictions):
         self._url = url
@@ -40,7 +40,7 @@ class URLParser:
 
             self._vacancies_data.append(vacancy_data)
 
-    def get_parsed_data(self) -> list[dict]:
+    def get_parsed_data(self) -> list:
         """Returns the parsed data"""
         return self._vacancies_data
 

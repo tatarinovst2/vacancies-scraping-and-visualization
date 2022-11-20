@@ -5,7 +5,7 @@ import json
 import time
 import datetime
 
-from url_parser import URLParser
+from page_parser import PageParser
 from url_generator import URLGenerator
 
 
@@ -24,7 +24,7 @@ class Scraper:  # pylint: disable=too-few-public-methods
         page = 1
 
         while True:
-            parser = URLParser(url=url_generator.get_url(page), qualifications=qualifications)
+            parser = PageParser(url=url_generator.get_url(page), qualifications=qualifications)
 
             if parser.get_parsed_data():
                 self._vacancy_data.extend(parser.get_parsed_data())

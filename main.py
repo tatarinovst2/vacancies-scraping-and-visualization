@@ -1,6 +1,6 @@
 """Main"""
-from scraper import Scraper
-from visualizer import visualize_latest_dataset
+from core.scraper import Scraper
+from core.visualizer import visualize_latest_dataset
 
 
 if __name__ == "__main__":

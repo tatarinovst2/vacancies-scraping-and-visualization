@@ -22,14 +22,13 @@ Import and initialize the scraper.
 Then call `crawl()` and set parameters for scraping.
 
 ```py
-from scraper import Scraper
-
+from core.scraper import Scraper
 
 if __name__ == "__main__":
     scrapper = Scraper()
     scrapper.crawl(locations=['Москва'],
-               specializations=['Фронтенд разработчик'],
-               qualifications=['Средний (Middle)'])
+                   specializations=['Фронтенд разработчик'],
+                   qualifications=['Средний (Middle)'])
 ```
 
 ### Configuring crawling
@@ -67,7 +66,7 @@ Results in a json file stored in `\datasets\` folder.
 Vacancy parameters can be visualized  with `Visualizer`.
 
 ```py
-from visualizer import visualize_latest_dataset
+from core.visualizer import visualize_latest_dataset
 
 visualize_latest_dataset('qualification', bars=['Младший (Junior)',
                                                 'Средний (Middle)',
